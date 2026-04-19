@@ -1,16 +1,21 @@
 # STATE.md — Tour Life: International Dates v2
 
-## Status: PHASE 1 COMPLETE — Scaffold Built
+## Status: PHASE 1 COMPLETE — Scaffold Built, Awaiting Repo Push & Asset Drop
 
-## Stack: Phaser.js 3.80 + Vite 5 + Vercel
-## Repo: jamestown502502/tour-life-international-dates-v2
+## Stack
+- Engine: Phaser.js 3.80 + Vite 5
+- Deployment: Vercel (auto-deploy on push)
+- Repo: jamestown502502/tour-life-international-dates-v2
 
-## Completed
-- Architecture approved (Option C: JSON spine + AI fill)
-- All 9 scenes built
-- Systems: StateManager, DialogueEngine, RhythmEngine, AIFillService
-- Act 1 JSON spine (30+ nodes)
-- 6 setlists (unique per city)
-- 5 endings
+## Phase Completed
+- [x] Architecture approved
+- [x] Narrative pipeline locked
+- [x] Full project scaffold built
+- [x] All 8 scenes built: Boot, Preloader, Title, CityHub, Dialogue, Rhythm, RoadEvent, GameOver, HUD
+- [x] 5 endings: legendary / headliner / cult_hero / band_intact / crash_and_burn
 
-## Next: Asset drop + Vercel connect
+## Next Steps
+1. Push all files
+2. Connect Vercel
+3. Drop audio files
+4. Download Kenney sprites
