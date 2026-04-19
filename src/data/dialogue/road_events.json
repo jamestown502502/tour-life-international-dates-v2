@@ -1,0 +1,62 @@
+[
+  {
+    "id": "road_breakdown",
+    "title": "Bus Breakdown",
+    "description": "The tour bus sputters and dies on a highway. Ryder is furious. Jet is somehow asleep.",
+    "speaker": "Ryder Blaze",
+    "portrait": "ryder_annoyed",
+    "text": "Seriously?! We're five hours from Nashville and the bus decides NOW is the time?",
+    "choices": [
+      {"label":"Call a mechanic.","next":null,"statChanges":{"funds":-150,"fame":1},"outcome":"You pay $150 for an emergency fix."},
+      {"label":"Push the bus to the next exit.","next":null,"statChanges":{"ryder_rel":1,"nova_rel":-1},"outcome":"Ryder thinks it's hilarious. Nova documents the chaos."}
+    ]
+  },
+  {
+    "id": "road_fan_encounter",
+    "title": "Superfan on the Highway",
+    "description": "A car pulls alongside holding a sign: HONK IF YOURE TOUR LIFE.",
+    "speaker": "Jet",
+    "portrait": "jet_amused",
+    "text": "That was me. I honked. They're following us - should we pull over?",
+    "choices": [
+      {"label":"Pull over. Meet the fans.","next":null,"statChanges":{"fame":5,"jut_rel":1},"outcome":"Best twenty minutes of the road trip. It goes viral."},
+      {"label":"Keep driving.","next":null,"statChanges":{"nova_rel":1,"fame":-1},"outcome":"Nova approves. The fans post a disappointed TikTok."}
+    ]
+  },
+  {
+    "id": "road_brawl",
+    "title": "Truck Stop Brawl",
+    "description": "Ryder got into it with someone at a diner.",
+    "speaker": "Nova Wilde",
+    "portrait": "nova_alarmed",
+    "text": "I need a decision NOW. Ryder is outside with three large men.",
+    "choices": [
+      {"label":"Pull Ryder out before it escalates.","next":null,"statChanges":{"ryder_rel":2,"nova_rel":1},"outcome":"You defuse it. No blood, no headlines."},
+      {"label":"Film it. Content is content.","next":null,"statChanges":{"nova_rel":-2,"fame":4},"outcome":"The clip gets 200K views. Ryder doesn't speak to you for two days."}
+    ]
+  },
+  {
+    "id": "road_radio_spot",
+    "title": "Surprise Radio Call-In",
+    "description": "A local station wants a live phone interview right now.",
+    "speaker": "Nova Wilde",
+    "portrait": "nova_focused",
+    "text": "Free press. Your call - thirty seconds.",
+    "choices": [
+      {"label":"Do it. Improvise.","next":null,"statChanges":{"fame":8,"nova_rel":2},"outcome":"You kill it. The station plays your track three times."},
+      {"label":"Pass. Not prepared.","next":null,"statChanges":{"nova_rel":-1},"outcome":"Nova handles it. She doesn't let you forget it."}
+    ]
+  },
+  {
+    "id": "road_jet_phone_call",
+    "title": "Jet's Mystery Call",
+    "description": "Jet takes a call and comes back looking shaken.",
+    "speaker": "Jet",
+    "portrait": "jeh_shaken",
+    "text": "That was... nothing. Fine. How much further to Nashville?",
+    "choices": [
+      {"label":"Push him on it.","next":null,"statChanges":{"jut_rel":1},"outcome":"He admits a debt collector knows the tour schedule.","setFlag":{"key":"debt_collector_knows_schedule","value":true}},
+      {"label":"Leave it alone.","next":null,"statChanges":{},"outcome":"Jet nods. Puts his headphones on."}
+    ]
+  }
+]
