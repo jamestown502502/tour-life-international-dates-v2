@@ -1,0 +1,261 @@
+[
+  {
+    "id": "act1_chicago_arrival",
+    "speaker": "Nova Wilde",
+    "text": "Chicago. First real stop. The press is already sniffing around — we need to decide right now how we're playing this city. Loud and messy, or strategic and controlled.",
+    "portrait": "nova_serious",
+    "mood": "focused",
+    "choices": [
+      { "label": "Loud and messy. Let the music do the talking.", "next": "act1_ryder_agrees", "statChanges": { "fame": 3, "nova_rel": -1, "ryder_rel": 2 } },
+      { "label": "Strategic. Nova's right — we need good press.", "next": "act1_nova_pleased", "statChanges": { "nova_rel": 2, "ryder_rel": -1, "funds": 100 } },
+      { "label": "Ask Jet what he thinks.", "next": "act1_jet_opinion", "statChanges": { "jet_rel": 1 } }
+    ]
+  },
+  {
+    "id": "act1_ryder_agrees",
+    "speaker": "Ryder Blaze",
+    "text": "THAT's what I'm talking about. We go full volume, no apologies. This city either loves us or it doesn't — I refuse to beg for it.",
+    "portrait": "ryder_fired_up",
+    "mood": "hot",
+    "choices": [
+      { "label": "Lock it in. Full volume tonight.", "next": "act1_pre_show_hub", "statChanges": { "ryder_rel": 1 } },
+      { "label": "Ryder, simmer down. We still need to soundcheck.", "next": "act1_ryder_annoyance", "statChanges": { "ryder_rel": -1 } }
+    ]
+  },
+  {
+    "id": "act1_nova_pleased",
+    "speaker": "Nova Wilde",
+    "text": "Smart. I already have a Chicago Tribune contact who wants an exclusive before the show. This could get us a feature.",
+    "portrait": "nova_smile",
+    "mood": "strategic",
+    "choices": [
+      { "label": "Do the interview. Exposure is everything.", "next": "act1_interview_offered", "statChanges": { "fame": 5, "nova_rel": 1 } },
+      { "label": "No interviews before a show. I need to focus.", "next": "act1_pre_show_hub", "statChanges": { "nova_rel": -1 } }
+    ]
+  },
+  {
+    "id": "act1_jet_opinion",
+    "speaker": "Jet",
+    "text": "Honestly? I'd say keep it loose. But... look, I got a call earlier. The venue owner here — we have history. Might want to handle that before soundcheck.",
+    "portrait": "jet_chill",
+    "mood": "relaxed",
+    "choices": [
+      { "label": "What kind of history, Jet?", "next": "act1_jet_debt_hint", "statChanges": { "jet_rel": 1 } },
+      { "label": "Handle it yourself. We've got bigger things to worry about.", "next": "act1_pre_show_hub", "statChanges": { "jet_rel": -1 } }
+    ]
+  },
+  {
+    "id": "act1_jet_debt_hint",
+    "speaker": "Jet",
+    "text": "Look... I may have borrowed some money from the guy. Before the band. It's fine — I'm handling it. Just don't let him pull you aside alone.",
+    "portrait": "jeh_nervous",
+    "mood": "tense",
+    "choices": [
+      { "label": "How much? I'll cover it from the band fund.", "next": "act1_jet_debt_covered", "statChanges": { "funds": -200, "jet_rel": 3, "nova_rel": -1 } },
+      { "label": "That's your problem, Jet. Don't let it hit the show.", "next": "act1_pre_show_hub", "statChanges": { "jet_rel": -2 } }
+    ],
+    "setFlag": { "key": "jeh_debt_revealed", "value": true }
+  },
+  {
+    "id": "act1_jet_debt_covered",
+    "speaker": "Jet",
+    "text": "...You didn't have to do that. Seriously. I'll pay you back — every cent. You're a good one.",
+    "portrait": "jet_surprised",
+    "mood": "grateful",
+    "choices": [
+      { "label": "We're a band. That's how it works.", "next": "act1_pre_show_hub", "statChanges": { "jet_rel": 1 } }
+    ],
+    "setFlag": { "key": "jet_debt_paid", "value": true }
+  },
+  {
+    "id": "act1_ryder_annoyance",
+    "speaker": "Ryder Blaze",
+    "text": "Soundcheck. Right. Fine. But I swear if the monitors are garbage again I'm walking on stage and just SCREAMING until they fix it.",
+    "portrait": "ryder_annoyed",
+    "mood": "simmering",
+    "choices": [
+      { "label": "Fair anough. Let's go check the stage.", "next": "act1_pre_show_hub" }
+    ]
+  },
+  {
+    "id": "act1_interview_offered",
+    "speaker": "Nova Wilde",
+    "text": "Perfect. Keep it punchy — talk about the tour, not about Ryder's mood swings. And for the love of god, don't mention the last venue we got kicked out of.",
+    "portrait": "nova_scheming",
+    "mood": "strategic",
+    "choices": [
+      { "label": "Got it. I'll be charming.", "next": "act1_pre_show_hub", "statChanges": { "fame": 3 } }
+    ],
+    "setFlag": { "key": "chicago_interview_done", "value": true }
+  },
+  {
+    "id": "act1_pre_show_hub",
+    "speaker": "Ryder Blaze",
+    "text": "Alright. Venue's open. We got time before doors — explore if you want. But when I say it's time to go on, we GO.",
+    "portrait": "ryder_ready",
+    "mood": "charged",
+    "choices": [
+      { "label": "Walk the venue floor.", "next": "act1_venue_floor_npc" },
+      { "label": "Head to backstage — check the setlist with the band.", "next": "act1_backstage_setlist" },
+      { "label": "Skip it. Let's just play.", "next": "act1_show_launch" }
+    ]
+  },
+  {
+    "id": "act1_venue_floor_npc",
+    "speaker": "Local Fan",
+    "text": "...",
+    "portrait": "npc_fan",
+    "mood": "excited",
+    "isAIFill": true,
+    "npcRole": "local_fan",
+    "city": "chicago",
+    "choices": [
+      { "label": "Thanks for coming out.", "next": "act1_pre_show_return", "statChanges": { "fame": 1 } },
+      { "label": "Tell the whole bar to stay. It's going to get loud.", "next": "act1_pre_show_return", "statChanges": { "fame": 2 } }
+    ]
+  },
+  {
+    "id": "act1_backstage_setlist",
+    "speaker": "Nova Wilde",
+    "text": "Okay. I want to open with something that hits fast. Ryder wants the slow burn opener. You're the tiebreaker.",
+    "portrait": "nova_focused",
+    "mood": "calculating",
+    "choices": [
+      { "label": "Hit fast. We need to grab them immediately.", "next": "act1_show_launch", "statChanges": { "nova_rel": 1, "ryder_rel": -1, "fame": 2 } },
+      { "label": "Slow burn. Build tension, then destroy them.", "next": "act1_show_launch", "statChanges": { "ryder_rel": 1, "nova_rel": -1 } }
+    ]
+  },
+  {
+    "id": "act1_pre_show_return",
+    "speaker": "Ryder Blaze",
+    "text": "Time's up. Stage is ours. Let's go.",
+    "portrait": "ryder_fired_up",
+    "mood": "hot",
+    "choices": [
+      { "label": "Let's go.", "next": "act1_show_launch" }
+    ]
+  },
+  {
+    "id": "act1_show_launch",
+    "speaker": "Nova Wilde",
+    "text": "Cameras are on. This is it — our first real shot. Don't blow it.",
+    "portrait": "nova_intense",
+    "mood": "electric",
+    "choices": [],
+    "triggerEvent": { "type": "rhythm_performance", "setlistId": "act1_chicago_divebar", "returnNode": "act1_post_show" }
+  },
+  {
+    "id": "act1_post_show",
+    "speaker": "Jet",
+    "text": "Well. That happened. Crowd's still buzzing — I can hear it. How are you feeling?",
+    "portrait": "jet_chill",
+    "mood": "relaxed",
+    "choices": [
+      { "label": "Alive. I want to do that every night.", "next": "act1_ryder_post_show", "statChanges": { "jet_rel": 1, "fame": 3 } },
+      { "label": "We made some mistakes. We need to fix them before Nashville.", "next": "act1_nova_post_show", "statChanges": { "nova_rel": 1 } }
+    ]
+  },
+  {
+    "id": "act1_ryder_post_show",
+    "speaker": "Ryder Blaze",
+    "text": "Every night? That's the only way I know how to live. Nashville's going to be different though — better stage, bigger crowd, higher stakes. You ready?",
+    "portrait": "ryder_grinning",
+    "mood": "electric",
+    "choices": [
+      { "label": "Born ready.", "next": "act1_road_trip_chicago", "statChanges": { "ryder_rel": 1 } }
+    ]
+  },
+  {
+    "id": "act1_nova_post_show",
+    "speaker": "Nova Wilde",
+    "text": "Smart. I filmed the whole thing — I will send you notes on the parts that lost the room. Nashville is a music city. They'll eat us alive if we're sloppy.",
+    "portrait": "nova_analytical",
+    "mood": "focused",
+    "choices": [
+      { "label": "Send me the notes. I want to see everything.", "next": "act1_road_trip_chicago", "statChanges": { "nova_rel": 1, "fame": 2 } }
+    ]
+  },
+  {
+    "id": "act1_road_trip_chicago",
+    "speaker": "Nova Wilde",
+    "text": "Bus is loaded. Nashville's 8 hours. Something always happens on the road — it's how this life works. Try to sleep if you can.",
+    "portrait": "nova_tired",
+    "mood": "road_weary",
+    "choices": [],
+    "triggerEvent": { "type": "road_event", "pool": "act1_road_events", "returnNode": "act1_nashville_arrival" }
+  },
+  {
+    "id": "act1_nashville_arrival",
+    "speaker": "Ryder Blaze",
+    "text": "Nashville. Music city. Every person here thinks they're the next big thing. Let's remind them who they came to see.",
+    "portrait": "ryder_cocky",
+    "mood": "competitive",
+    "choices": [
+      { "label": "Let's scope the scene before soundcheck.", "next": "act1_nashville_hub" },
+      { "label": "Straight to soundcheck. No distractions.", "next": "act1_nashville_soundcheck", "statChanges": { "nova_rel": 1 } }
+    ]
+  },
+  {
+    "id": "act1_nashville_hub",
+    "speaker": "Rival Band Member",
+    "text": "...",
+    "portrait": "npc_rival",
+    "mood": "competitive",
+    "isAIFill": true,
+    "npcRole": "rival_band_member",
+    "city": "nashville",
+    "choices": [
+      { "label": "Friendly. Make a connection.", "next": "act1_nashville_rival_friendly", "statChanges": { "fame": 1 } },
+      { "label": "Cold. You're not here to make friends.", "next": "act1_nashville_soundcheck", "statChanges": { "ryder_rel": 1 } }
+    ]
+  },
+  {
+    "id": "act1_nashville_rival_friendly",
+    "speaker": "Nova Wilde",
+    "text": "That was a smart move. Half of Nashville is built on who you know. Ryder's giving me death stares but long-term? Smart.",
+    "portrait": "nova_approving",
+    "mood": "strategic",
+    "choices": [
+      { "label": "On to the stage.", "next": "act1_nashville_soundcheck" }
+    ]
+  },
+  {
+    "id": "act1_nashville_soundcheck",
+    "speaker": "Jet",
+    "text": "Monitors are actually decent here. And the stage is huge. I think we should drop the opener and hit them with the second song first.",
+    "portrait": "jet_thoughtful",
+    "mood": "musical",
+    "choices": [
+      { "label": "Do it. Shake up the order.", "next": "act1_nashville_show_launch", "statChanges": { "jet_rel": 1, "fame": 2 } },
+      { "label": "Stick to the setlist. We know what works.", "next": "act1_nashville_show_launch" }
+    ]
+  },
+  {
+    "id": "act1_nashville_show_launch",
+    "speaker": "Ryder Blaze",
+    "text": "Nasville. Here we come. No holding back — not tonight, not ever.",
+    "portrait": "ryder_stage_ready",
+    "mood": "electric",
+    "choices": [],
+    "triggerEvent": { "type": "rhythm_performance", "setlistId": "act1_nashville_honkytonk", "returnNode": "act1_nashville_post_show" }
+  },
+  {
+    "id": "act1_nashville_post_show",
+    "speaker": "Nova Wilde",
+    "text": "That crowd was different. Louder. More demanding. And we held it. Something shifted tonight — I can feel it. Act 2 is going to look a lot different.",
+    "portrait": "nova_excited",
+    "mood": "momentum",
+    "choices": [
+      { "label": "Europe next. Let's go.", "next": "act1_end_europe_transition", "statChanges": { "fame": 5 } }
+    ]
+  },
+  {
+    "id": "act1_end_europe_transition",
+    "speaker": "Jet",
+    "text": "London. Berlin. I've always wanted to play Europe. Just... let's make sure the tour bus doesn't break down over the Atlantic.",
+    "portrait": "jeh_dreaming",
+    "mood": "hopeful",
+    "choices": [],
+    "triggerEvent": { "type": "act_transition", "nextAct": 2, "message": "Act 1 Complete — Heading to Europe" }
+  }
+]
