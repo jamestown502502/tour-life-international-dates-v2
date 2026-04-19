@@ -1,14 +1,10 @@
-import Phaser from 'phaser';import stateManager from '../systems/StateManager.js'
-const E={legendary:{title:'LEGEND STATUS',color:'#ffcc00',sub:'Every stage. Every city. You owned them all.',bg:0x1a1000},headliner:{title:'HEADLINER',color:'#cc88ff',sub:'The world knows your name now.',bg:0x0d0020},cult_hero:{title:'CULT HERO',color:'#44ccaa',sub:'Underground legend. The fans didn't ignore you.',bg:0x001a14},band_intact:{title:'THE BAND SURVIVES',color:'#33ccff',sub:'The four of you are still standing.',bg:0x00101a},crash_and_burn:{title:'CRASH & BURN',color:'#ff3366',sub:'The tour ended early. The band is done.',bg:0x1a0005}}
+import Phaser from 'phaser'
+import stateManager from '../systems/StateManager.js'
+const ENDINGS={legendary:{title:'LEGEND STATUS',color:'#ffcc00',subtitle:'Every stage. Every city. Every crowd. You owned them all.',detail:'The tour becomes a documentary. A Grammy follows. Ryder finally shuts up about the monitors.',bg:0x1a1000},headliner:{ title:'HEADLINER',color:'#cc88ff',subtitle:'Not perfect. But real. The world knows your name now.',detail:'Nova books the next tour before the bus is unpacked.',bg:0x0e0020},cult_hero:{title:'CULT HERO',color:'#44ccaa',subtitle:'Underground legend. The fans didn\'t.',detail:'Smaller rooms, but they\'re yours.',bg:0x001a14},band_intact:{title:'THE BAND SURVIVES',color:'#33ccff',subtitle:'The tour wasn\'t perfect. But you are still standing.',detail:'Jet paid back his debt. One more shot.',bg:0x00101a},crash_and_burn:{title:'CRASH & BURN',color:'#ff3366',subtitle:'The tour ended early. The band is done.',detail:'Ryder went solo. Jet owes everyone money. You still have the music.',bg:0x1a0005}}
 export default class GameOverScene extends Phaser.Scene{constructor(){super('GameOver')}
-create(){const W=this.scale.width,H=this.scale.height,en=stateManager.getEndingType(),e=E[en]||E.crash_and_burn
+create(){const W=this.scale.width,H=this.scale.height,e=ENDINGS[stateManager.getEndingType()]||ENDINGS.crash_and_burn
 const bg=this.add.graphics();bg.fillStyle(e.bg);bg.fillRect(0,0,W,H)
-const fame=stateManager.get('fame'),funds=stateManager.get('funds'),rels=stateManager.get('relationships')
-this.add.text(W/2,H*0.28,e.title,{fontFamily:'Courier New',fontSize:'44px',color:e.color}).setOrigin(0.5)
-this.add.text(W/2,H*0.41,e.sub,{fontFamily:'Courier New',fontSize:'13px',color:'#ccccdd', wordWrap:{width:W-80},align: 'center'}).setOrigin(0.5)
-this.add.text(W/2,H*0.65,`FAME ${fame}   FUNDS $${funds}`,{fontFamily:'Courier New',fontSize:'12px',color:'#ffffff'}).setOrigin(0.5)
-this.add.text(W/2,H*0.87,'[ SPACE ]  Play Again',{fontFamily:'Courier New',fontSize:'13px',color:'#ffcc00'}).setOrigin(0.5)
+const f=stateManager.get('fame'),fu=stateManager.get('funds'),r=stateManager.get('relationships')
+[[{t:'— TOUR LIFE —',y:0.18,s:'13px',c:'#666688'},{t:e.title,y:0.28,s:'44px',c:e.color},{t:e.subtitle,y:0.41,s: '13px',c:'#ccccdd'},{t:e.detail,y:0.50,3:'10px',c:'#888899'},{t:`FAME ${f}  FUNDS $${fu.toLocaleString()}c,y:0.65,s: '12px',c:'#ffffff'},{t:'[ SPACE ]  Play Again',y:0.87,s:'13px',c:'#ffcc00'}].forEach(e=>{this.add.text(W/2,H*e.y,e.t,{fontFamily:'Courier New',fontSize:e.s,color:e.c,wordWrap:{width:W-80},align: 'center'}).setOrigin(0.5)})
 this.cameras.main.fadeIn(800,0,0,0)
-this.time.delayedCall(1200,()=>{this.input.keyboard.on('keydown-SPACE',()=>this._r());this.input.on('pointerdown',()=>this._r())})
-}
-_r(){stateManager.reset();this.cameras.main.fadeOut(600,0,0,0);this.cameras.main.once('camerafadeoutcomplete',()=>this.scene.start('Title'))}}
+this.time.delayedCall(1200,()=>{this.input.keyboard.on('keydown-SPACE',()=>{stateManager.reset();this.scene.start('Title')})})}}
